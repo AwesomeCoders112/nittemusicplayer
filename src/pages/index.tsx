@@ -1,5 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 
 import { api } from "~/utils/api";
@@ -47,6 +48,8 @@ export default function Home() {
             <p className="text-2xl text-white">
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
             </p>
+
+            
             <AuthShowcase />
           </div>
         </div>
@@ -75,6 +78,7 @@ function AuthShowcase() {
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>
+      <Image src={sessionData?.user.image} width={"100"} height={"100"}/>
     </div>
   );
 }
